@@ -1,0 +1,5 @@
+body {
+  background: url("{{ url_for('static', filename='cdn/backgrounds/fullsize.png') }}") no-repeat;
+  margin: 0;
+}
+/*# sourceMappingURL=core.css.map */
