@@ -1,3 +1,5 @@
+$font: 'Segoe UI', 'Noto Sans'
+    
 body
     display: grid
     grid-template-columns: 20vw auto auto
@@ -34,7 +36,7 @@ body
         border-radius: 10px
 
         // Text within the box
-        font: normal normal 22px Segoe UI
+        font: normal normal 22px $font
         padding-left: 10px
 
     .searchButton    
@@ -56,7 +58,7 @@ body
         grid-row: 2
     
         cursor: pointer
-        font: normal normal 600 23px Segoe UI
+        font: normal normal 600 23px $font
         color: #FFFFFF
         text-shadow: 3px 6px 10px #00000063
     
@@ -66,7 +68,7 @@ body
 @media screen and ( max-width: 700px )
     #searchButtonHolder
         grid-column: 1 / 4
-        grid-template-columns: 75vw 60px
+        grid-template-columns: 70vw 60px
         justify-self: center
 
 #hamburger
@@ -89,6 +91,6 @@ body
     margin: 2vmax 0 0 5vmax
 
     cursor: pointer
-    font: normal normal 300 50px/20px Segoe UI;
+    font: normal normal 300 50px/20px $font
     color: #FFFFFF;
-    text-shadow: 0px 3px 6px #00000029;
+    text-shadow: 0px 3px 6px #00000029

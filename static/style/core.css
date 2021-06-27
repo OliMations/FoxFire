@@ -45,7 +45,7 @@ body {
           box-shadow: 1px 6px 10px #00000066;
   border: none;
   border-radius: 10px;
-  font: normal normal 22px Segoe UI;
+  font: normal normal 22px "Segoe UI", "Noto Sans";
   padding-left: 10px;
 }
 
@@ -74,7 +74,7 @@ body {
   -ms-grid-row: 2;
   grid-row: 2;
   cursor: pointer;
-  font: normal normal 600 23px Segoe UI;
+  font: normal normal 600 23px "Segoe UI", "Noto Sans";
   color: #FFFFFF;
   text-shadow: 3px 6px 10px #00000063;
 }
@@ -88,8 +88,8 @@ body {
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-column: 1 / 4;
-    -ms-grid-columns: 75vw 60px;
-        grid-template-columns: 75vw 60px;
+    -ms-grid-columns: 70vw 60px;
+        grid-template-columns: 70vw 60px;
     -ms-grid-column-align: center;
         justify-self: center;
   }
@@ -121,7 +121,7 @@ body {
   justify-self: flex-start;
   margin: 2vmax 0 0 5vmax;
   cursor: pointer;
-  font: normal normal 300 50px/20px Segoe UI;
+  font: normal normal 300 50px/20px "Segoe UI", "Noto Sans";
   color: #FFFFFF;
   text-shadow: 0px 3px 6px #00000029;
 }
