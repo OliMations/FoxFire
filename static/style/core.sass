@@ -1,27 +1,51 @@
 $font: 'Segoe UI', 'Noto Sans'
-    
+
+::-webkit-scrollbar
+    height: 10px
+
+
+::-webkit-scrollbar-thumb
+    background: #ffffff75
+    border-radius: 10px
+
+
 body
+    // defining body layout using CSS Grid
     display: grid
     grid-template-columns: 20vw auto auto
-    grid-template-rows: 23vh 20vh
+    grid-template-rows: 23vh 20vh 1fr
     
+    // setting the background image properties so that it scales correctly
     background-color: #2E2E2E
     background-position: center center
     background-attachment: fixed
     background-size: cover
     background-repeat: no-repeat
 
-.enlarge:hover
-    transform: scale(1.1, 1.1)
+// this makes the buttons enlarge when hovered
+.enlarge:hover 
+    transform: scale(1.1, 1.1) !important
 
+// A hover effect to make it clear this is clickable
+.underliner:hover
+    text-decoration: underline !important
+
+// This holds the search input box, the search initiate button and category select button
 #searchButtonHolder
+    // This has got its own "subgrid" to align the items together within the master grid
     display: grid
     grid-column: 2
     grid-row: 2
     grid-template-rows: 60px 2vw
     grid-template-columns: 44vw 60px
-    
+
+    transition: transform 1s
+    transition-delay: 0.52s
+
+    // This is the search input box
     #searchInput
+        // Positioned in the first column, first row of the subgrid, which is positioned in the middle column,
+        // bottom row of the master grid
         position: relative
         justify-self: left
         grid-column: 1
@@ -35,24 +59,27 @@ body
         border: none
         border-radius: 10px
 
-        // Text within the box
+        // Text within the search box
         font: normal normal 22px $font
         padding-left: 10px
 
+    // The search initiate button
     .searchButton    
         grid-column: 2
         grid-row: 1
         justify-self: flex-end
+        z-index: 1
 
         width: 40px
         height: auto
-        z-index: 1
         margin: 8px 0 0 0
 
+        // Makes your cursor turn into the "clickable" state when this button is hovered
         cursor: pointer
         background-color: #ffffff
         transition: transform 0.1s
 
+    // The category select button
     #searchInputLabel
         grid-column: 1 / 3
         grid-row: 2
@@ -61,36 +88,166 @@ body
         font: normal normal 600 23px $font
         color: #FFFFFF
         text-shadow: 3px 6px 10px #00000063
-    
-    #searchInputLabel:hover
-        text-decoration: underline
 
+// This adjusts the styling for smaller, less than 700px wide, screens
 @media screen and ( max-width: 700px )
     #searchButtonHolder
+        // Makes everything wider and moves it more centrally
         grid-column: 1 / 4
         grid-template-columns: 70vw 60px
         justify-self: center
 
+// The hamburger menu in the top right
 #hamburger
     grid-column: 2 / 4
     grid-row: 1
     justify-self: flex-end
+    z-index: 1
     
     width: 50px
-    margin: 20px
-    margin: 2vmax 5vmax 0 0
+    margin-top: 2vmax
+    margin-right: 5vmax 
 
     cursor: pointer
     transition: transform 0.1s
 
+// The website logo in the top left
 #websiteName
     grid-column: 1 / 3
     grid-row: 1
     justify-self: flex-start
+    z-index: 1
 
     margin: 2vmax 0 0 5vmax
+    height: 0
 
     cursor: pointer
     font: normal normal 300 50px/20px $font
     color: #FFFFFF;
     text-shadow: 0px 3px 6px #00000029
+
+// The actual menu
+.hamburgerMenu
+    position: fixed
+    top: 0
+    right: -300px
+    z-index: 2
+
+    height: 100%
+    width: 300px
+    margin: 0
+    overflow: hidden
+
+    background-color: #dbdbdbde
+    transition: 0.5s;
+    
+    // X button in the menu
+    #closeMenu
+        position: absolute
+        right: 0
+
+        width: 40px
+        // This means where the user doesnt have to move their mouse after clicking the open button to close it again
+        padding-left: 90px
+        margin: 2.2vmax 20px
+        
+        cursor: pointer
+        transition: transform 0.1s
+
+    
+    ul
+        margin: 100px 20px
+        text-align: right
+        list-style: none
+        font: normal normal 300 35px/53px Segoe UI
+    
+        a
+            text-decoration: none
+            color: #464646
+
+@media screen and ( max-width: 600px )
+    // Makes the menu fullscreen on small devices
+    .hamburgerMenu
+        width: 100%
+        right: -100%
+
+        ul
+            font: normal normal 300 45px/73px Segoe UI
+
+// The large category meny
+.categoryMenu
+    display: grid
+    grid-template-rows: 1fr 8fr
+    // one column for each category box
+    grid-template-columns: repeat(4, minmax(350px, 1fr))
+    
+    position: fixed
+    left: 0
+    bottom: 0
+    z-index: 0
+
+    overflow-y: hidden
+    overflow-x: scroll
+    width: 100%
+    height: 0
+
+    background-color: #000000b2
+    transition: 1.35s
+
+    // X button in top right
+    #closeMenuCategory
+        position: fixed
+        right: 0
+
+        width: 40px
+        margin: 2.2vmax 6vmax
+
+        cursor: pointer
+        transition: transform 0.1s
+    
+    // The 4 boxes, each one containing information
+    .categoryBox
+        display: grid
+        place-self: center
+        justify-items: center
+        grid-row: 2
+        grid-template-rows: 15% 65% 20%
+
+        height: 80%
+        width: 300px
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 5px solid #707070;
+        border-radius: 28px;
+        opacity: 0.76;
+
+        // the title at the top of the box
+        .title
+            margin: 0
+            text-align: center;
+
+            font: normal normal bold 35px/76px $font;
+            color: #707070;
+        
+        // The body of the box
+        .desc
+            margin: 0
+            font: normal normal normal 25px/28px $font
+            color: #707070
+            text-align: center
+            margin: 0 10px
+
+        // the select button at the button
+        .categoryButton
+            border: 4px solid #707070
+            border-radius: 15px
+            width: 210px
+            height: 60%
+            min-height: 50px
+            background: #FFFFFF 0% 0% no-repeat padding-box
+
+            cursor: pointer
+            transition: transform 0.1s
+            font: normal normal normal 35px/32px $font
+            padding-top: 0px
+            color: #707070

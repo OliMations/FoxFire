@@ -1,10 +1,19 @@
+::-webkit-scrollbar {
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff75;
+  border-radius: 10px;
+}
+
 body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 20vw auto auto;
       grid-template-columns: 20vw auto auto;
-  -ms-grid-rows: 23vh 20vh;
-      grid-template-rows: 23vh 20vh;
+  -ms-grid-rows: 23vh 20vh 1fr;
+      grid-template-rows: 23vh 20vh 1fr;
   background-color: #2E2E2E;
   background-position: center center;
   background-attachment: fixed;
@@ -13,8 +22,12 @@ body {
 }
 
 .enlarge:hover {
-  -webkit-transform: scale(1.1, 1.1);
-          transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1) !important;
+          transform: scale(1.1, 1.1) !important;
+}
+
+.underliner:hover {
+  text-decoration: underline !important;
 }
 
 #searchButtonHolder {
@@ -28,6 +41,12 @@ body {
       grid-template-rows: 60px 2vw;
   -ms-grid-columns: 44vw 60px;
       grid-template-columns: 44vw 60px;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-transition-delay: 0.52s;
+          transition-delay: 0.52s;
 }
 
 #searchButtonHolder #searchInput {
@@ -55,9 +74,9 @@ body {
   -ms-grid-row: 1;
   grid-row: 1;
   justify-self: flex-end;
+  z-index: 1;
   width: 40px;
   height: auto;
-  z-index: 1;
   margin: 8px 0 0 0;
   cursor: pointer;
   background-color: #ffffff;
@@ -79,10 +98,6 @@ body {
   text-shadow: 3px 6px 10px #00000063;
 }
 
-#searchButtonHolder #searchInputLabel:hover {
-  text-decoration: underline;
-}
-
 @media screen and (max-width: 700px) {
   #searchButtonHolder {
     -ms-grid-column: 1;
@@ -102,9 +117,10 @@ body {
   -ms-grid-row: 1;
   grid-row: 1;
   justify-self: flex-end;
+  z-index: 1;
   width: 50px;
-  margin: 20px;
-  margin: 2vmax 5vmax 0 0;
+  margin-top: 2vmax;
+  margin-right: 5vmax;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.1s;
   transition: -webkit-transform 0.1s;
@@ -119,10 +135,142 @@ body {
   -ms-grid-row: 1;
   grid-row: 1;
   justify-self: flex-start;
+  z-index: 1;
   margin: 2vmax 0 0 5vmax;
+  height: 0;
   cursor: pointer;
   font: normal normal 300 50px/20px "Segoe UI", "Noto Sans";
   color: #FFFFFF;
   text-shadow: 0px 3px 6px #00000029;
+}
+
+.hamburgerMenu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  z-index: 2;
+  height: 100%;
+  width: 300px;
+  margin: 0;
+  overflow: hidden;
+  background-color: #dbdbdbde;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.hamburgerMenu #closeMenu {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  padding-left: 90px;
+  margin: 2.2vmax 20px;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+}
+
+.hamburgerMenu ul {
+  margin: 100px 20px;
+  text-align: right;
+  list-style: none;
+  font: normal normal 300 35px/53px Segoe UI;
+}
+
+.hamburgerMenu ul a {
+  text-decoration: none;
+  color: #464646;
+}
+
+@media screen and (max-width: 600px) {
+  .hamburgerMenu {
+    width: 100%;
+    right: -100%;
+  }
+  .hamburgerMenu ul {
+    font: normal normal 300 45px/73px Segoe UI;
+  }
+}
+
+.categoryMenu {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 8fr;
+      grid-template-rows: 1fr 8fr;
+  -ms-grid-columns: (minmax(350px, 1fr))[4];
+      grid-template-columns: repeat(4, minmax(350px, 1fr));
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  width: 100%;
+  height: 0;
+  background-color: #000000b2;
+  -webkit-transition: 1.35s;
+  transition: 1.35s;
+}
+
+.categoryMenu #closeMenuCategory {
+  position: fixed;
+  right: 0;
+  width: 40px;
+  margin: 2.2vmax 6vmax;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+}
+
+.categoryMenu .categoryBox {
+  display: -ms-grid;
+  display: grid;
+  place-self: center;
+  justify-items: center;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  -ms-grid-rows: 15% 65% 20%;
+      grid-template-rows: 15% 65% 20%;
+  height: 80%;
+  width: 300px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 5px solid #707070;
+  border-radius: 28px;
+  opacity: 0.76;
+}
+
+.categoryMenu .categoryBox .title {
+  margin: 0;
+  text-align: center;
+  font: normal normal bold 35px/76px "Segoe UI", "Noto Sans";
+  color: #707070;
+}
+
+.categoryMenu .categoryBox .desc {
+  margin: 0;
+  font: normal normal normal 25px/28px "Segoe UI", "Noto Sans";
+  color: #707070;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.categoryMenu .categoryBox .categoryButton {
+  border: 4px solid #707070;
+  border-radius: 15px;
+  width: 210px;
+  height: 60%;
+  min-height: 50px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+  font: normal normal normal 35px/32px "Segoe UI", "Noto Sans";
+  padding-top: 0px;
+  color: #707070;
 }
 /*# sourceMappingURL=core.css.map */

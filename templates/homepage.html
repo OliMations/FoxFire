@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/core.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='cdn/elements/favicon.ico') }}">
+    <script src="{{ url_for('static', filename='javascript.js') }}"></script>
 </head>
 <body style="background-image: url('../cdn/backgrounds/fullsize.jpg');">
+    <nav class="hamburgerMenu">
+        <img id="closeMenu" class="enlarge" onclick="menuClose()" src="{{ url_for('static', filename='cdn/elements/closeDark.png') }}">
+        <ul>
+            <li><a class="underliner" href="./">Home</a></li>
+            <li><a class="underliner" href="./">About</a></li>
+            <li><a class="underliner" href="./">Settings</a></li>
+            <li><a class="underliner" href="./">Contact Us</a></li>
+            <li><a class="underliner" href="./">API Status</a></li>
+            <li><a class="underliner" href="./">Admin</a></li>
+        </ul>
+    </nav>
+
+    <div class="categoryMenu">
+        <img id="closeMenuCategory" class="enlarge" onclick="categoryMenuClose()" src="{{ url_for('static', filename='cdn/elements/close.png') }}">
+        <div class="categoryBox" id="automatic">
+            <h3 class="title">Automatic</h3>
+            <p class="desc">Automatically selects the search module needed based on keywords in your search.</p>
+            <button class="enlarge categoryButton" onclick="categoryMenuClose()">Select</button>
+        </div>
+        <div class="categoryBox" id="standard">
+            <h3 class="title">Standard</h3>
+            <p class="desc">Search for a basic content. Including the Weather, Maths, Wikipedia, News and more.</p>
+            <button class="enlarge categoryButton" onclick="categoryMenuClose()">Select</button>
+        </div>
+        <div class="categoryBox" id="programming">
+            <h3 class="title">Programming</h3>
+            <p class="desc">Search for all the answers you may ever need! Can pull results from Stack Overflow, GitHub, Reddit, Read the Docs and more!</p>
+            <button class="enlarge categoryButton" onclick="categoryMenuClose()">Select</button>
+        </div>
+        <div class="categoryBox" id="placeholder">
+            <h3 class="title">To be decided</h3>
+            <p class="desc">To be decided...</p>
+        </div>
+    </div>
+
     <h1 id="websiteName">Foxfire</h1>
-    <img id="hamburger" class="enlarge" src="{{ url_for('static', filename='cdn/elements/hamburger.png') }}">
+    <img id="hamburger" class="enlarge" onclick="menuOpen()" src="{{ url_for('static', filename='cdn/elements/hamburger.png') }}">
     <div id="searchButtonHolder">
         <input type="text" name="searchInput" autofocus id="searchInput" placeholder="This Website is Non-Functional!">
         <img class="searchButton enlarge" src="{{ url_for('static', filename='cdn/elements/search.png') }}">
-        <label for="searchInput" id="searchInputLabel">Select Search Topic</label>
+        <label for="searchInput" onclick="categoryMenuOpen()" class="underliner" id="searchInputLabel">Select Search Topic</label>
     </div>
 </body>
 </html>
+
+
+
