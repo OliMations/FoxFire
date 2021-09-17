@@ -1,0 +1,149 @@
+$font: 'Segoe UI', 'Noto Sans'
+    
+body
+    // defining body layout using CSS Grid
+    display: grid
+    grid-template-columns: 215px auto
+    grid-template-rows: 150px
+    
+    // setting the background image properties so that it scales correctly
+    background-color: #2E2E2E
+
+// Search bar at the top
+#searchButtonHolder
+    justify-self: left
+    padding-top: 10px
+    grid-column: 2
+    grid-row: 1
+
+    #searchInputLabel
+        display: none
+
+// Displays amount of results on the page
+#resultsCount
+    grid-column: 2
+    grid-row: 1
+    padding-top: 55px
+    font: normal normal 400 22px/22px $font
+    color: white
+
+    i
+        font: normal normal 200 18px/18px $font
+
+.resultEntry
+    display: grid
+    grid-template-columns: 215px auto
+    grid-column: 1 / 3
+    color: white
+
+
+    .reliability
+        font: normal normal 200 22px $font
+        color: #00C570
+        text-align: center
+        margin: 0
+
+        b
+            font: normal normal 800 70px/65px $font
+
+    .resultTitle
+        margin: 0
+        font: normal normal 400 20px $font
+        color: #49A4F3
+
+    .resultTitle:hover
+        text-decoration: underline
+        cursor: pointer
+
+    .resultBody
+        margin: 0 0 30px
+        font: normal normal 200 18px $font
+        max-width: 60vw
+
+    
+.resultsInfoBox
+    grid-column: span 3
+    margin-top: 30px
+    text-align: center
+    color: white
+
+    #noMoreResults
+        font: normal normal 200 50px $font
+        margin-bottom: 10px
+    
+    button
+        border: 2px solid #FFFFFF;
+        border-radius: 10px;
+        font: normal normal 200 30px $font
+        color: white
+        padding: 2px 60px
+        background: none
+
+        transition: transform 0.05s
+    
+    #noAnswer
+        margin: 125px 0 0
+        font: normal normal 200 28px $font
+
+        a
+            text-decoration: underline
+            cursor: pointer
+
+footer
+    grid-column: span 3
+    text-align: center
+    margin: 10px 0 25px 0
+    font: normal normal 200 22px $font
+
+    a
+        color: #B8B8B8
+        text-decoration: none
+        margin: 0 12px
+        cursor: pointer
+
+// Large red alert that appears when a key API is offline
+#apiAlert
+    background-color: #890000
+    width: 100%
+    // Needed to keep the box at the bottom of the page
+    position: fixed
+    bottom: 0
+    left: 0
+
+    p
+        color: white
+        font: normal normal normal 20px/20px $font 
+        padding-left: 20px 
+
+    img
+        margin: 12px 20px 5px 5px
+        width: 40px
+        float: right
+
+        transition: transform 0.05s
+
+// This is to match a media query in core.sass that makes the search bar bigger at 1000px. Moves icon right
+@media screen and (max-width:1000px)
+    #hamburger
+        margin: 25px 0 0 0
+    
+@media screen and ( max-width: 700px )
+    // Moves reliability rates inline and the same size as everything else and
+    .leftHandSide .reliability
+        text-align: left
+        b
+            font: normal normal 400 22px $font
+
+    // Allows the result body and title to take up the full width of the screen
+    .rightHandSide
+        grid-column: 1 / 3
+        .resultBody
+            max-width: 100vw
+
+    // Makes more space for the search bar at the top
+    #websiteName
+        display: none
+
+    // This also allows the search bar and result counter to take up the screens full width
+    #searchButtonHolder, #resultsCount
+        grid-column: 1 / 3

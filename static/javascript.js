@@ -4,7 +4,7 @@ function menuOpen() {
     document.querySelector(".hamburgerMenu").style.right = "0px"
     window.addEventListener('transitionend', function addButtonBack () {
         // adds the hamburger menu open button back once the transition animation has finished
-        document.querySelector("#hamburger").style.display = "none"
+        document.querySelector("#hamburger").classList.add("hidden")
         window.removeEventListener('transitionend', addButtonBack)
     })
 }
@@ -14,9 +14,9 @@ function menuClose() {
     let menuIcon = document.querySelector("#hamburger")
     // reapplying that displacement
     document.querySelector(".hamburgerMenu").style.right = null
-    if (document.querySelector("#searchInputLabel").style.display != "none") {
+    if (!document.querySelector("#searchInputLabel").classList.contains("hidden")) {
         window.addEventListener('transitionend', function addButtonBack () {
-            menuIcon.style.display = "block"
+            menuIcon.classList.remove("hidden")
             window.removeEventListener('transitionend', addButtonBack)
         })
     }
@@ -24,12 +24,12 @@ function menuClose() {
 
 // Opens the large category menu
 function categoryMenuOpen() {
-    document.querySelector("#searchInputLabel").style.display = "none"
+    document.querySelector("#searchInputLabel").classList.add("hidden")
     menuClose() // this closes the small hamburger menu if open
     document.querySelector(".categoryMenu").style.height = "100%"
     window.setTimeout(function addButtonBack () {
         // this hides the hamburger menu open button after 900ms
-        document.querySelector("#hamburger").style.display = "none"
+        document.querySelector("#hamburger").classList.add("hidden")
     }, 900)
 
     // pushes the search bar off screen
@@ -45,13 +45,34 @@ function categoryMenuOpen() {
 // closes the large category menu
 function categoryMenuClose() {
     document.querySelector(".categoryMenu").style.height = "0"
-    document.querySelector("#searchInputLabel").style.display = "block"
+    document.querySelector("#searchInputLabel").classList.remove("hidden")
     window.setTimeout(function addButtonBack () {
         // makes the hamburger button reappear after 100ms
-        document.querySelector("#hamburger").style.display = "block"
+        document.querySelector("#hamburger").classList.remove("hidden")
     }, 100)
     document.querySelector("#searchButtonHolder").style.visibility = ""
     document.querySelector("#searchButtonHolder").style.transform = ""
     document.querySelector("#searchButtonHolder").style.transitionDelay = "0s"
 
 }
+
+function apiAlertClose() {
+    document.querySelector("#apiAlert").classList.add("hidden")
+}
+
+function apiAlertOpen() {
+    document.querySelector("#apiAlert").classList.remove("hidden")
+}
+
+function viewAllResults() {
+    let results = document.querySelectorAll(".resultEntry")
+    results.forEach(item => {
+        if (parseInt(item.getAttribute("score")) < 70) {
+            item.classList.remove("hidden")
+        }
+    })
+    document.querySelector(".resultsInfoBox").classList.add("hidden")
+}
+
+
+

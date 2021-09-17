@@ -2,17 +2,19 @@ $font: 'Segoe UI', 'Noto Sans'
 
 ::-webkit-scrollbar
     height: 10px
+    width: 10px
 
+.hidden
+    display: none !important
 
 ::-webkit-scrollbar-thumb
     background: #ffffff75
-    border-radius: 10px
+    border-radius: 5px
 
 
 body
     // defining body layout using CSS Grid
     display: grid
-    grid-template-columns: 20vw auto auto
     grid-template-rows: 23vh 20vh 1fr
     
     // setting the background image properties so that it scales correctly
@@ -25,6 +27,7 @@ body
 // this makes the buttons enlarge when hovered
 .enlarge:hover 
     transform: scale(1.1, 1.1) !important
+    cursor: pointer
 
 // A hover effect to make it clear this is clickable
 .underliner:hover
@@ -34,28 +37,20 @@ body
 #searchButtonHolder
     // This has got its own "subgrid" to align the items together within the master grid
     display: grid
-    grid-column: 2
-    grid-row: 2
-    grid-template-rows: 60px 2vw
-    grid-template-columns: 44vw 60px
+    justify-self: center
+    grid-column: 1 / 4
+    grid-template-rows: 60px
+    grid-template-columns: 50vw 60px
+    z-index: 2
 
-    transition: transform 1s
-    transition-delay: 0.52s
+    transition: transform 1s 0.55s
 
     // This is the search input box
     #searchInput
-        // Positioned in the first column, first row of the subgrid, which is positioned in the middle column,
-        // bottom row of the master grid
-        position: relative
-        justify-self: left
-        grid-column: 1
-        grid-row: 1
-
         width: 100%
         padding-right: 60px
 
-        background: #FFFFFF 0% 0% no-repeat padding-box
-        box-shadow: 1px 6px 10px #00000066
+        outline: none
         border: none
         border-radius: 10px
 
@@ -65,50 +60,36 @@ body
 
     // The search initiate button
     .searchButton    
-        grid-column: 2
-        grid-row: 1
         justify-self: flex-end
-        z-index: 1
-
         width: 40px
-        height: auto
         margin: 8px 0 0 0
 
         // Makes your cursor turn into the "clickable" state when this button is hovered
-        cursor: pointer
-        background-color: #ffffff
         transition: transform 0.1s
 
     // The category select button
     #searchInputLabel
-        grid-column: 1 / 3
         grid-row: 2
     
         cursor: pointer
+        width: fit-content
+        height: fit-content
         font: normal normal 600 23px $font
         color: #FFFFFF
-        text-shadow: 3px 6px 10px #00000063
 
-// This adjusts the styling for smaller, less than 700px wide, screens
-@media screen and ( max-width: 700px )
+// This adjusts the styling for smaller, less than 1000px wide, screens
+@media screen and ( max-width: 1000px )
     #searchButtonHolder
-        // Makes everything wider and moves it more centrally
-        grid-column: 1 / 4
-        grid-template-columns: 70vw 60px
-        justify-self: center
+        grid-template-columns: 60vw 60px
 
 // The hamburger menu in the top right
 #hamburger
-    grid-column: 2 / 4
     grid-row: 1
     justify-self: flex-end
-    z-index: 1
     
     width: 50px
-    margin-top: 2vmax
-    margin-right: 5vmax 
+    margin: 30px 40px 0 0
 
-    cursor: pointer
     transition: transform 0.1s
 
 // The website logo in the top left
@@ -118,13 +99,12 @@ body
     justify-self: flex-start
     z-index: 1
 
-    margin: 2vmax 0 0 5vmax
-    height: 0
+    margin: 30px 0 0 40px
+    height: fit-content
 
     cursor: pointer
     font: normal normal 300 50px/20px $font
     color: #FFFFFF;
-    text-shadow: 0px 3px 6px #00000029
 
 // The actual menu
 .hamburgerMenu
@@ -144,14 +124,12 @@ body
     // X button in the menu
     #closeMenu
         position: absolute
-        right: 0
+        right: 0px
 
         width: 40px
         // This means where the user doesnt have to move their mouse after clicking the open button to close it again
-        padding-left: 90px
-        margin: 2.2vmax 20px
+        margin: 40px 40px 0 0
         
-        cursor: pointer
         transition: transform 0.1s
 
     
@@ -184,7 +162,6 @@ body
     position: fixed
     left: 0
     bottom: 0
-    z-index: 0
 
     overflow-y: hidden
     overflow-x: scroll
@@ -200,9 +177,8 @@ body
         right: 0
 
         width: 40px
-        margin: 2.2vmax 6vmax
+        margin: 30px 50px 0 0 
 
-        cursor: pointer
         transition: transform 0.1s
     
     // The 4 boxes, each one containing information
@@ -216,15 +192,13 @@ body
         height: 80%
         width: 300px
 
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        border: 5px solid #707070;
-        border-radius: 28px;
-        opacity: 0.76;
+        background: #ffffffdc 0% 0% no-repeat padding-box
+        border: 5px solid #707070
+        border-radius: 28px
 
         // the title at the top of the box
         .title
             margin: 0
-            text-align: center;
 
             font: normal normal bold 35px/76px $font;
             color: #707070;
@@ -244,10 +218,8 @@ body
             width: 210px
             height: 60%
             min-height: 50px
-            background: #FFFFFF 0% 0% no-repeat padding-box
 
-            cursor: pointer
             transition: transform 0.1s
-            font: normal normal normal 35px/32px $font
+            font: normal normal normal 35px $font
             padding-top: 0px
             color: #707070
