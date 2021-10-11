@@ -1,0 +1,30 @@
+{% extends "core.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/info.css') }}">
+
+
+<div id="aboutUsHolder">
+    <h2 id="aboutUsTitle">About Us</h2>
+    <p id="aboutUs">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
+        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam 
+        voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci 
+        velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea 
+        commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae 
+        consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</div>
+
+<div id="foxBox">
+    <p id="foxType">Arctic Foxes</p>
+    <img id="af1" src="{{ url_for('static', filename='cdn/foxes/arcticFox1.jpg') }}">
+    <img id="af2" src="{{ url_for('static', filename='cdn/foxes/arcticFox3.png') }}">
+    <img id="af3" src="{{ url_for('static', filename='cdn/foxes/arcticFox2.jpg') }}">
+</div>
+
+
+<script>
+    document.querySelector("body").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../cdn/backgrounds/fullsize.jpg')"
+</script>
+{% endblock %}
+

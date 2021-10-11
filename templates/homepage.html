@@ -1,6 +1,6 @@
 {% extends "core.html" %}
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/home.css') }}">
 <div class="categoryMenu">
     <img id="closeMenuCategory" class="enlarge" onclick="categoryMenuClose()" src="{{ url_for('static', filename='cdn/elements/close.png') }}">
     <div class="categoryBox" id="automatic">

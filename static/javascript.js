@@ -33,12 +33,12 @@ function categoryMenuOpen() {
     }, 900)
 
     // pushes the search bar off screen
-    document.querySelector("#searchButtonHolder").style.transform = "translate(0, -32vh)" 
+    document.querySelector("#searchButtonHolder").style.transform = "translate(0, -40vh)" 
     window.addEventListener("transitionend", function hideSearchBar() {
         document.querySelector("#searchButtonHolder").style.visibility = "hidden"
         window.removeEventListener('transitionend', hideSearchBar)
     })
-    document.querySelector("#searchButtonHolder").style.transitionDelay = "0.52s"
+    document.querySelector("#searchButtonHolder").style.transitionDelay = "0.15s"
 
 }
 
@@ -73,6 +73,3 @@ function viewAllResults() {
     })
     document.querySelector(".resultsInfoBox").classList.add("hidden")
 }
-
-
-

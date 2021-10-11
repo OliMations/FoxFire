@@ -15,18 +15,17 @@
         <label for="searchInput" onclick="categoryMenuOpen()" class="underliner" id="searchInputLabel">Select Search Topic</label>
     </div>
 
-    <h1 id="websiteName" onclick="window.location = './'">Foxfire</h1>
+    <img id="websiteName"  onclick="window.location = './'" src="{{ url_for('static', filename='cdn/elements/foxLogoTest.png') }}">
     <img id="hamburger" class="enlarge" onclick="menuOpen()" src="{{ url_for('static', filename='cdn/elements/hamburger.png') }}">
     
     <nav class="hamburgerMenu">
         <img id="closeMenu" class="enlarge" onclick="menuClose()" src="{{ url_for('static', filename='cdn/elements/closeDark.png') }}">
         <ul>
             <li><a class="underliner" href="./">Home</a></li>
-            <li><a class="underliner" href="./">About</a></li>
-            <li><a class="underliner" href="./">Settings</a></li>
-            <li><a class="underliner" href="./">Contact Us</a></li>
-            <li><a class="underliner" href="./">API Status</a></li>
-            <li><a class="underliner" href="./">Admin</a></li>
+            <li><a class="underliner" href="./about">About</a></li>
+            <li><a class="underliner" href="./contact">Contact Us</a></li>
+            <li><a class="underliner" href="./dashboard">API Status</a></li>
+            <li><a class="underliner" href="./admin">Admin</a></li>
         </ul>
     </nav>
     {% block content %}{% endblock %}
@@ -34,6 +33,3 @@
     
 </body>
 </html>
-
-
-

@@ -1,0 +1,88 @@
+$font: 'Segoe UI', 'Noto Sans'
+    
+body
+    grid-template-rows: 20vh auto
+
+#leftside
+    grid-column: span 2
+    margin: 30px 60px
+    width: 60%
+    
+    fieldset
+        border: none
+
+    legend
+        text-align: left
+        font: lighter 45px $font
+        color: #FFFFFF
+
+    input, textarea
+        display: inline-block
+        width: 97.5%
+        height: 40px
+        margin: 2.5px 0
+        font: lighter 20px $font
+        border-radius: 5px
+        border: 1px solid #707070;
+    
+    textarea
+        height: 20vh
+        resize: none
+    
+    #submit
+        border: none
+        width: 25%
+        font-weight: normal
+
+        transition: transform 0.1s
+
+    .halflength
+        width: 48%
+
+#foxBox
+    position: absolute
+    align-self: center
+    top: 23vh
+    width: 32vw
+    right: 70px
+    height: 35vw
+
+    #f1
+        max-width: 20vw
+
+    #f2
+        width: 13vw
+        right: 0
+        top: 8vw
+
+    #f3
+        width: 12vw
+        bottom: 2vw
+        left: 8vw
+        z-index: -1
+
+    img  
+        position: absolute
+        border-radius: 10px
+        z-index: 0
+
+    
+    #foxType
+        position: absolute
+        margin: 0
+        right: 7vw
+        top: 6.5vw
+        font: 1vw $font
+        color: white
+    
+@media screen and ( max-width: 1000px )
+    #foxBox
+        display: none
+
+    #leftside
+        width: 100%
+        margin-left: 0
+        grid-column: span 3
+    
+        .halflength
+            width: 47%

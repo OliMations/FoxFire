@@ -10,7 +10,20 @@ def home():
 def results():
     return flask.render_template("results.html", pageTitle="Results")
 
+@app.route('/about')
+def about():
+    return flask.render_template("about.html", pageTitle="About")
+
+@app.route('/contact')
+def contact():
+    return flask.render_template("contact.html", pageTitle="Contact Us")
+
+@app.errorhandler(404)
+def notfound(_):
+    return flask.render_template("404.html", pageTitle="Uh Oh- Thats a 404!")
+
 if __name__ == "__main__":
     website_url = "localhost:5000"
-    app.config["SE1RVER_NAME"] = website_url
+    app.config["SERVER_NAME"] = website_url
     app.run(debug=True, use_reloader=False)
+

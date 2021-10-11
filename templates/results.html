@@ -1,7 +1,7 @@
 {% extends "core.html" %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/results.css') }}">
-<div id="apiAlert" hidden>
+<div id="apiAlert" >
     <img class="enlarge" onclick="apiAlertClose()" src="{{ url_for('static', filename='cdn/elements/close.png') }}">
     <p>3 APIs are currently offline 1 of which is classified as "Important". This means <u>your search results may be impeded</u> and not up to expectations. Our Apologies.</p>
 </div>

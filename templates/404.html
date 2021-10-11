@@ -1,0 +1,15 @@
+{% extends "core.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/404.css') }}">
+
+
+<div id="leftSide">
+    <h1>404...</h1>
+    <p>You appear to be a tad lost....<br>Why not <a href="./">Return Home</a> quick?</p>
+</div>
+
+<script>
+    document.querySelector("body").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../cdn/backgrounds/fullsize.jpg')"
+</script>
+{% endblock %}
+

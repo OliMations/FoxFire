@@ -2,22 +2,10 @@ $font: 'Segoe UI', 'Noto Sans'
     
 body
     // defining body layout using CSS Grid
-    display: grid
-    grid-template-columns: 215px auto
     grid-template-rows: 150px
     
     // setting the background image properties so that it scales correctly
     background-color: #2E2E2E
-
-// Search bar at the top
-#searchButtonHolder
-    justify-self: left
-    padding-top: 10px
-    grid-column: 2
-    grid-row: 1
-
-    #searchInputLabel
-        display: none
 
 // Displays amount of results on the page
 #resultsCount
@@ -121,11 +109,6 @@ footer
         float: right
 
         transition: transform 0.05s
-
-// This is to match a media query in core.sass that makes the search bar bigger at 1000px. Moves icon right
-@media screen and (max-width:1000px)
-    #hamburger
-        margin: 25px 0 0 0
     
 @media screen and ( max-width: 700px )
     // Moves reliability rates inline and the same size as everything else and
@@ -145,5 +128,5 @@ footer
         display: none
 
     // This also allows the search bar and result counter to take up the screens full width
-    #searchButtonHolder, #resultsCount
+    #resultsCount
         grid-column: 1 / 3

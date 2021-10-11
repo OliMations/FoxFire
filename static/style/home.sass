@@ -1,0 +1,110 @@
+$font: 'Segoe UI', 'Noto Sans'
+
+body
+    // defining body layout using CSS Grid
+    grid-template-rows: 23vh 20vh 1fr
+    grid-template-columns: 12vw
+
+
+// This holds the search input box, the search initiate button and category select button
+#searchButtonHolder
+    // This has got its own "subgrid" to align the items together within the master grid
+    display: grid
+    justify-self: center
+    grid-column: 1 / 4
+    grid-row: 2
+    grid-template-rows: 60px
+    grid-template-columns: 50vw 60px
+
+    z-index: 2
+
+#searchInputLabel
+    grid-row: 2
+ 
+    display: block !important
+    cursor: pointer
+    width: fit-content
+    height: fit-content
+    font: normal normal 600 23px $font
+    color: #FFFFFF
+
+// The large category meny
+.categoryMenu
+    display: grid
+    grid-template-rows: 1fr 8fr
+    // one column for each category box
+    grid-template-columns: repeat(4, minmax(350px, 1fr))
+    
+    position: fixed
+    left: 0
+    bottom: 0
+
+    overflow-y: hidden
+    overflow-x: scroll
+    width: 100%
+    height: 0
+
+    background-color: #000000b2
+    transition: 1.35s
+
+    // X button in top right
+    #closeMenuCategory
+        position: fixed
+        right: 0
+
+        width: 40px
+        margin: 30px 50px 0 0 
+
+        transition: transform 0.1s
+    
+    // The 4 boxes, each one containing information
+    .categoryBox
+        display: grid
+        place-self: center
+        justify-items: center
+        grid-row: 2
+        grid-template-rows: 15% 65% 20%
+
+        height: 80%
+        width: 300px
+
+        background: #ffffffdc
+        border: 5px solid #707070
+        border-radius: 28px
+
+        // the title at the top of the box
+        .title
+            margin: 0
+
+            font: bold 35px/76px $font;
+            color: #707070;
+        
+        // The body of the box
+        .desc
+            margin: 0
+            font: 25px/28px $font
+            color: #707070
+            text-align: center
+            margin: 0 10px
+
+        // the select button at the button
+        .categoryButton
+            border: 4px solid #707070
+            border-radius: 15px
+            width: 210px
+            height: 60%
+            min-height: 50px
+
+            transition: transform 0.1s
+            font: 35px $font
+            padding-top: 0px
+            color: #707070
+
+@media screen and ( max-width: 700px )
+    // Makes more space for the search bar at the top
+    #websiteName
+        display: block
+
+    #searchButtonHolder
+        grid-template-columns: 70vw 60px
+

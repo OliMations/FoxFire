@@ -15,8 +15,8 @@
 body {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 23vh 20vh 1fr;
-      grid-template-rows: 23vh 20vh 1fr;
+  -ms-grid-columns: 215px auto;
+      grid-template-columns: 215px auto;
   background-color: #2E2E2E;
   background-position: center center;
   background-attachment: fixed;
@@ -37,20 +37,19 @@ body {
 #searchButtonHolder {
   display: -ms-grid;
   display: grid;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-column: 1 / 4;
+  padding-top: 10px;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
   -ms-grid-rows: 60px;
       grid-template-rows: 60px;
   -ms-grid-columns: 50vw 60px;
       grid-template-columns: 50vw 60px;
-  z-index: 2;
-  -webkit-transition: -webkit-transform 1s 0.55s;
-  transition: -webkit-transform 1s 0.55s;
-  transition: transform 1s 0.55s;
-  transition: transform 1s 0.55s, -webkit-transform 1s 0.55s;
+  -webkit-transition: -webkit-transform 1.4s;
+  transition: -webkit-transform 1.4s;
+  transition: transform 1.4s;
+  transition: transform 1.4s, -webkit-transform 1.4s;
 }
 
 #searchButtonHolder #searchInput {
@@ -59,7 +58,7 @@ body {
   outline: none;
   border: none;
   border-radius: 10px;
-  font: normal normal 22px "Segoe UI", "Noto Sans";
+  font: 22px "Segoe UI", "Noto Sans";
   padding-left: 10px;
 }
 
@@ -74,32 +73,17 @@ body {
 }
 
 #searchButtonHolder #searchInputLabel {
-  -ms-grid-row: 2;
-  grid-row: 2;
-  cursor: pointer;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  font: normal normal 600 23px "Segoe UI", "Noto Sans";
-  color: #FFFFFF;
-}
-
-@media screen and (max-width: 1000px) {
-  #searchButtonHolder {
-    -ms-grid-columns: 60vw 60px;
-        grid-template-columns: 60vw 60px;
-  }
+  display: none;
 }
 
 #hamburger {
+  justify-self: flex-end;
   -ms-grid-row: 1;
   grid-row: 1;
-  justify-self: flex-end;
+  -ms-grid-column: 3;
+  grid-column: 3;
   width: 50px;
-  margin: 30px 40px 0 0;
+  margin: 25px 2vw 0 20px;
   -webkit-transition: -webkit-transform 0.1s;
   transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
@@ -107,30 +91,22 @@ body {
 }
 
 #websiteName {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / 3;
+  justify-self: flex-start;
   -ms-grid-row: 1;
   grid-row: 1;
-  justify-self: flex-start;
-  z-index: 1;
-  margin: 30px 0 0 40px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  margin: 5px 0 0 23px;
+  width: 150px;
   cursor: pointer;
-  font: normal normal 300 50px/20px "Segoe UI", "Noto Sans";
   color: #FFFFFF;
 }
 
 .hamburgerMenu {
   position: fixed;
-  top: 0;
   right: -300px;
   z-index: 2;
+  top: 0;
   height: 100%;
   width: 300px;
-  margin: 0;
   overflow: hidden;
   background-color: #dbdbdbde;
   -webkit-transition: 0.5s;
@@ -160,7 +136,7 @@ body {
   color: #464646;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .hamburgerMenu {
     width: 100%;
     right: -100%;
@@ -168,80 +144,17 @@ body {
   .hamburgerMenu ul {
     font: normal normal 300 45px/73px Segoe UI;
   }
-}
-
-.categoryMenu {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 1fr 8fr;
-      grid-template-rows: 1fr 8fr;
-  -ms-grid-columns: (minmax(350px, 1fr))[4];
-      grid-template-columns: repeat(4, minmax(350px, 1fr));
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  width: 100%;
-  height: 0;
-  background-color: #000000b2;
-  -webkit-transition: 1.35s;
-  transition: 1.35s;
-}
-
-.categoryMenu #closeMenuCategory {
-  position: fixed;
-  right: 0;
-  width: 40px;
-  margin: 30px 50px 0 0;
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
-  transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
-}
-
-.categoryMenu .categoryBox {
-  display: -ms-grid;
-  display: grid;
-  place-self: center;
-  justify-items: center;
-  -ms-grid-row: 2;
-  grid-row: 2;
-  -ms-grid-rows: 15% 65% 20%;
-      grid-template-rows: 15% 65% 20%;
-  height: 80%;
-  width: 300px;
-  background: #ffffffdc 0% 0% no-repeat padding-box;
-  border: 5px solid #707070;
-  border-radius: 28px;
-}
-
-.categoryMenu .categoryBox .title {
-  margin: 0;
-  font: normal normal bold 35px/76px "Segoe UI", "Noto Sans";
-  color: #707070;
-}
-
-.categoryMenu .categoryBox .desc {
-  margin: 0;
-  font: normal normal normal 25px/28px "Segoe UI", "Noto Sans";
-  color: #707070;
-  text-align: center;
-  margin: 0 10px;
-}
-
-.categoryMenu .categoryBox .categoryButton {
-  border: 4px solid #707070;
-  border-radius: 15px;
-  width: 210px;
-  height: 60%;
-  min-height: 50px;
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
-  transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
-  font: normal normal normal 35px "Segoe UI", "Noto Sans";
-  padding-top: 0px;
-  color: #707070;
+  #searchButtonHolder {
+    -ms-grid-columns: 60vw 60px;
+        grid-template-columns: 60vw 60px;
+  }
+  #websiteName {
+    display: none;
+  }
+  #searchButtonHolder {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1 / 3;
+  }
 }
 /*# sourceMappingURL=core.css.map */

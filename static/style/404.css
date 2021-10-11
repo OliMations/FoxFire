@@ -1,0 +1,29 @@
+#leftSide {
+  grid-column: span 3;
+  color: #FFFFFF;
+  margin: 70px 100px;
+}
+
+#leftSide h1 {
+  font: 70px "Segoe UI", "Noto Sans";
+  margin-bottom: 0;
+}
+
+#leftSide p {
+  font: 40px "Segoe UI", "Noto Sans";
+  margin-top: 0;
+}
+
+#leftSide a {
+  -webkit-text-decoration: underline dashed;
+          text-decoration: underline dashed;
+  color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  #leftSide {
+    margin: 70px 20px;
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=404.css.map */

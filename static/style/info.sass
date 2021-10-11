@@ -1,0 +1,65 @@
+$font: 'Segoe UI', 'Noto Sans'
+    
+body
+    grid-template-rows: 20vh auto
+
+#aboutUsHolder
+    grid-column: span 2
+    color: #FFFFFF
+    margin: 40px 40px
+    width: 65%
+
+
+    #aboutUsTitle
+        font: 53px $font;
+        margin: 0
+
+    #aboutUs
+        font: lighter 28px/28px $font;
+        margin: 0
+
+#foxBox
+    position: absolute
+    align-self: center
+    top: 23vh
+    width: 32vw
+    right: 70px
+    height: 35vw
+
+    #af1
+        max-width: 16vw
+
+    #af2
+        width: 18vw
+        right: 0
+        top: 2.5vw
+        z-index: -1
+
+    #af3
+        width: 18vw
+        bottom: 0
+        left: 2.5vw
+
+    img  
+        position: absolute
+        border-radius: 10px
+        z-index: 0
+
+    
+    #foxType
+        position: absolute
+        margin: 0
+        right: 6vw
+        top: 1vw
+        font: 1vw $font
+        color: white
+    
+@media screen and ( max-width: 1000px )
+    #foxBox
+        display: none
+
+    #aboutUsHolder
+
+        grid-column: span 3
+        margin: 10px 0
+        width: 90%

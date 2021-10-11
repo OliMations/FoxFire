@@ -1,25 +1,7 @@
 body {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 215px auto;
-      grid-template-columns: 215px auto;
   -ms-grid-rows: 150px;
       grid-template-rows: 150px;
   background-color: #2E2E2E;
-}
-
-#searchButtonHolder {
-  -ms-grid-column-align: left;
-      justify-self: left;
-  padding-top: 10px;
-  -ms-grid-column: 2;
-  grid-column: 2;
-  -ms-grid-row: 1;
-  grid-row: 1;
-}
-
-#searchButtonHolder #searchInputLabel {
-  display: none;
 }
 
 #resultsCount {
@@ -148,12 +130,6 @@ footer a {
   transition: transform 0.05s, -webkit-transform 0.05s;
 }
 
-@media screen and (max-width: 1000px) {
-  #hamburger {
-    margin: 25px 0 0 0;
-  }
-}
-
 @media screen and (max-width: 700px) {
   .leftHandSide .reliability {
     text-align: left;
@@ -172,7 +148,7 @@ footer a {
   #websiteName {
     display: none;
   }
-  #searchButtonHolder, #resultsCount {
+  #resultsCount {
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-column: 1 / 3;
