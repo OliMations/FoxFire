@@ -1,0 +1,29 @@
+{% extends "core.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/apiStatus.css') }}">
+
+
+<p id="resultsCount">{{ apiStatuses["total"] }} APIs Used in Total. {{ apiStatuses["online"] }} Online, {{ apiStatuses["offline"] }} Offline</p>
+<p hidden id="backupLink">{{ url_for('static', filename='cdn/apiLogos/default.gif') }}</p> <!-- this is the default image link thats accessed in the javascript -->
+
+
+{% for cat in categoryList %}
+<div class="apiBox">
+    <p class="apiTitle">Websites (APIs) Accessed for <u>{{ cat["name"] }}</u></p>
+    {% for api in cat["apis"] %}
+            <div class="api {% if api['status'] == True %}onlineStatus{% elif api['status'] == False %}offlineStatus{% endif %}">
+            
+            <img src="{{ url_for('static', filename='cdn/apiLogos/' + api['logo']) }}" onerror="imageDisplayError(this)" 
+                title="{{ api['name'] }}'s Logo">
+            <h4>{{ api["name"] }}</h4>
+            <p>{{ api["desc"] }}</p>
+            <div class="infoBox">
+                <button class="enlarge">Ping!</button> <!-- this isnt currently linked to anything but will be later -->
+                <h6 class="latency">Latency<br><b>{{ api["ping"] }}</b><i>ms</i></h6> <!-- this also isnt currently linked to anything but will be later -->
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}
+

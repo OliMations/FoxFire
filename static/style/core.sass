@@ -11,6 +11,8 @@ $font: 'Segoe UI', 'Noto Sans'
     background: #ffffff75
     border-radius: 5px
 
+a
+    color: white
 
 body    
     display: grid
@@ -41,15 +43,16 @@ body
     grid-row: 1
     grid-template-rows: 60px
     grid-template-columns: 50vw 60px
+    position: relative
 
     transition: transform 1.4s
 
     // This is the search input box
     #searchInput
-        width: 100%
-        padding-right: 60px
+        width: 94%
+        height: 95%
 
-        outline: none
+        padding-right: 6%
         border: none
         border-radius: 10px
 
@@ -58,10 +61,11 @@ body
         padding-left: 10px
 
     // The search initiate button
-    .searchButton    
-        justify-self: flex-end
+    .searchButton
+        position: relative
+        float: right
+        top: -50px
         width: 40px
-        margin: 8px 0 0 0
 
         // Makes your cursor turn into the "clickable" state when this button is hovered
         transition: transform 0.1s
@@ -75,7 +79,7 @@ body
 #hamburger
     justify-self: flex-end
     grid-row: 1
-    grid-column: 3
+    grid-column: main-end
 
     width: 50px
     margin: 25px 2vw 0 20px
@@ -86,6 +90,7 @@ body
 #websiteName
     justify-self: flex-start
     grid-row: 1
+    z-index: 2
 
     margin: 5px 0 0 23px
     width: 150px
@@ -130,6 +135,29 @@ body
             text-decoration: none
             color: #464646
 
+.blackout
+    display: grid
+    position: fixed
+    left: 0
+    bottom: 0
+
+    align-items: center
+    justify-items: center
+
+    overflow-y: hidden
+    overflow-x: scroll
+    width: 100%
+    height: 0
+    z-index: 100
+
+    background-color: #000000e5
+    transition: 0.8s
+
+    h1
+        text-align: center
+        font: bold normal 60px $font
+        color: white
+
 @media screen and ( max-width: 700px )
     // Makes the menu fullscreen on small devices
     .hamburgerMenu
@@ -139,14 +167,10 @@ body
         ul
             font: normal normal 300 45px/73px Segoe UI
 
-
-    #searchButtonHolder
-        grid-template-columns: 60vw 60px
-
     // Makes more space for the search bar at the top
     #websiteName
         display: none
 
     // This also allows the search bar and result counter to take up the screens full width
     #searchButtonHolder
-        grid-column: 1 / 3
+        grid-column: 1 / 3 

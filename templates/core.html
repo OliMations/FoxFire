@@ -6,30 +6,38 @@
     <title>{{ pageTitle }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/core.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='cdn/elements/favicon.ico') }}">
-    <script src="{{ url_for('static', filename='javascript.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='javascript.js') }}"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="searchButtonHolder">
-        <input type="text" name="searchInput" autofocus id="searchInput" placeholder="This Website is Non-Functional!">
-        <img class="searchButton enlarge" onclick="window.location = './results'" src="{{ url_for('static', filename='cdn/elements/search.png') }}">
+        <form id="searchInputForm">
+            <input type="text" name="searchInput" autofocus id="searchInput">
+            <input type="image" class="enlarge searchButton" src="{{ url_for('static', filename='cdn/elements/search.png') }}" title="Search">
+        </form>
         <label for="searchInput" onclick="categoryMenuOpen()" class="underliner" id="searchInputLabel">Select Search Topic</label>
     </div>
 
-    <img id="websiteName"  onclick="window.location = './'" src="{{ url_for('static', filename='cdn/elements/foxLogoTest.png') }}">
-    <img id="hamburger" class="enlarge" onclick="menuOpen()" src="{{ url_for('static', filename='cdn/elements/hamburger.png') }}">
+    <img id="websiteName"  onclick="window.location = '/'" src="{{ url_for('static', filename='cdn/elements/foxLogoTest.png') }}" title="Home">
+    <img id="hamburger" class="enlarge" onclick="menuOpen()" src="{{ url_for('static', filename='cdn/elements/hamburger.png') }}" title="Options">
     
     <nav class="hamburgerMenu">
-        <img id="closeMenu" class="enlarge" onclick="menuClose()" src="{{ url_for('static', filename='cdn/elements/closeDark.png') }}">
+        <img id="closeMenu" class="enlarge" onclick="menuClose()" src="{{ url_for('static', filename='cdn/elements/closeDark.png') }}" title="Close Menu">
         <ul>
-            <li><a class="underliner" href="./">Home</a></li>
-            <li><a class="underliner" href="./about">About</a></li>
-            <li><a class="underliner" href="./contact">Contact Us</a></li>
-            <li><a class="underliner" href="./dashboard">API Status</a></li>
-            <li><a class="underliner" href="./admin">Admin</a></li>
+            <li><a class="underliner" href="/">Home</a></li>
+            <li><a class="underliner" href="/about">About</a></li>
+            <li><a class="underliner" href="/contact">Contact Us</a></li>
+            <li><a class="underliner" href="/api/dashboard">API Status</a></li>
+            <li><a class="underliner" href="/admin">Admin</a></li>
         </ul>
     </nav>
+    <div class="blackout">
+        <h1>Loading as fast as possible!<br>Wont be a sec :)</h1>
+    </div>
     {% block content %}{% endblock %}
-
     
 </body>
 </html>

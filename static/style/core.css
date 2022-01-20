@@ -12,6 +12,10 @@
   border-radius: 5px;
 }
 
+a {
+  color: white;
+}
+
 body {
   display: -ms-grid;
   display: grid;
@@ -46,6 +50,7 @@ body {
       grid-template-rows: 60px;
   -ms-grid-columns: 50vw 60px;
       grid-template-columns: 50vw 60px;
+  position: relative;
   -webkit-transition: -webkit-transform 1.4s;
   transition: -webkit-transform 1.4s;
   transition: transform 1.4s;
@@ -53,9 +58,9 @@ body {
 }
 
 #searchButtonHolder #searchInput {
-  width: 100%;
-  padding-right: 60px;
-  outline: none;
+  width: 94%;
+  height: 95%;
+  padding-right: 6%;
   border: none;
   border-radius: 10px;
   font: 22px "Segoe UI", "Noto Sans";
@@ -63,9 +68,10 @@ body {
 }
 
 #searchButtonHolder .searchButton {
-  justify-self: flex-end;
+  position: relative;
+  float: right;
+  top: -50px;
   width: 40px;
-  margin: 8px 0 0 0;
   -webkit-transition: -webkit-transform 0.1s;
   transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
@@ -80,8 +86,7 @@ body {
   justify-self: flex-end;
   -ms-grid-row: 1;
   grid-row: 1;
-  -ms-grid-column: 3;
-  grid-column: 3;
+  grid-column: main-end;
   width: 50px;
   margin: 25px 2vw 0 20px;
   -webkit-transition: -webkit-transform 0.1s;
@@ -94,6 +99,7 @@ body {
   justify-self: flex-start;
   -ms-grid-row: 1;
   grid-row: 1;
+  z-index: 2;
   margin: 5px 0 0 23px;
   width: 150px;
   cursor: pointer;
@@ -136,6 +142,32 @@ body {
   color: #464646;
 }
 
+.blackout {
+  display: -ms-grid;
+  display: grid;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  width: 100%;
+  height: 0;
+  z-index: 100;
+  background-color: #000000e5;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+
+.blackout h1 {
+  text-align: center;
+  font: bold normal 60px "Segoe UI", "Noto Sans";
+  color: white;
+}
+
 @media screen and (max-width: 700px) {
   .hamburgerMenu {
     width: 100%;
@@ -143,10 +175,6 @@ body {
   }
   .hamburgerMenu ul {
     font: normal normal 300 45px/73px Segoe UI;
-  }
-  #searchButtonHolder {
-    -ms-grid-columns: 60vw 60px;
-        grid-template-columns: 60vw 60px;
   }
   #websiteName {
     display: none;

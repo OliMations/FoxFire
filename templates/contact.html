@@ -20,9 +20,9 @@
 
 <div id="foxBox">
     <p id="foxType">Red Foxes</p>
-    <img id="f1" src="{{ url_for('static', filename='cdn/foxes/redfox1.jpg') }}">
-    <img id="f2" src="{{ url_for('static', filename='cdn/foxes/redfox2.jpg') }}">
-    <img id="f3" src="{{ url_for('static', filename='cdn/foxes/redfox3.jpg') }}">
+    <img id="f1" src="{{ url_for('static', filename='cdn/foxes/redfox1.jpg') }}" title="Cute Boi">
+    <img id="f2" src="{{ url_for('static', filename='cdn/foxes/redfox2.jpg') }}" title="Cute Red Boi">
+    <img id="f3" src="{{ url_for('static', filename='cdn/foxes/redfox3.jpg') }}" title="Super Cute Red Boi">
 </div>
 
 
@@ -30,4 +30,3 @@
     document.querySelector("body").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../cdn/backgrounds/fullsize.jpg')"
 </script>
 {% endblock %}
-

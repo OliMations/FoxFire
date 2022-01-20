@@ -43,7 +43,7 @@ function categoryMenuOpen() {
 }
 
 // closes the large category menu
-function categoryMenuClose() {
+function categoryMenuClose(cat) {
     document.querySelector(".categoryMenu").style.height = "0"
     document.querySelector("#searchInputLabel").classList.remove("hidden")
     window.setTimeout(function addButtonBack () {
@@ -53,8 +53,22 @@ function categoryMenuClose() {
     document.querySelector("#searchButtonHolder").style.visibility = ""
     document.querySelector("#searchButtonHolder").style.transform = ""
     document.querySelector("#searchButtonHolder").style.transitionDelay = "0s"
-
+    if (cat != -1) {
+        $.post("./search", {
+            "option": 0,
+            "value": cat
+        }) 
+    }
 }
+
+$("#searchInputForm").submit((e) => {
+    e.preventDefault()
+
+    let searchTerm = $("#searchInput").val()
+    if (searchTerm == "") {return}
+    window.location.href = `/results?search=${encodeURI(searchTerm)}`
+    document.querySelector(".blackout").style.height = "100%"
+})
 
 function apiAlertClose() {
     document.querySelector("#apiAlert").classList.add("hidden")
@@ -73,3 +87,11 @@ function viewAllResults() {
     })
     document.querySelector(".resultsInfoBox").classList.add("hidden")
 }
+
+function imageDisplayError(elem) {
+    let backupLink = $("#backupLink").text() // this defines a local variable which contains the link to the default image
+    if (elem.src != backupLink) { // this prevents perpetual loading if the default image is also erroring
+        elem.src = backupLink
+    }
+}
+

@@ -1,0 +1,106 @@
+$font: 'Segoe UI', 'Noto Sans'
+    
+body
+    // defining body layout using CSS Grid
+    grid-template-rows: 150px
+    
+    // setting the background image properties so that it scales correctly
+    background-color: #2E2E2E
+
+// Displays amount of results on the page
+#resultsCount
+    grid-column: 2
+    grid-row: 1
+    padding-top: 55px
+    font: normal normal 400 22px/22px $font
+    color: white
+
+    i
+        font: normal normal 200 18px/18px $font
+
+.apiBox
+    display: grid
+    grid-column: 1/5 // let it take the whole page
+    grid-template-rows: auto auto 
+    // this fits as many columns in as possible making sure each one is at least 275px wide
+    grid-template-columns: repeat(auto-fit, minmax(275px, 330px)) 
+
+    .apiTitle
+        margin: 10px 0 10px 10px
+        width: 92vw
+        grid-column: 1/-1
+        font: 40px/40px $font
+        color: white
+
+    .api
+        display: grid
+        grid-template-rows: 35% 5% 50% 10% // this defines how much space is taken up by each section of the box
+
+        margin: 10px
+        border: #848484 solid 6px
+        border-radius: 10px 
+        background-color: white
+        text-align: center
+        width: 300px
+        max-height: 700px
+
+        img
+            grid-row: 1
+            justify-self: center
+            align-self: center
+            // this makes sure the image never touches or goes beyond the border
+            max-height: 90%
+            max-width: 90%
+
+        h4
+            grid-row: 2
+            font: 30px/30px $font
+            margin: 0
+
+        p
+            height: 100%
+            overflow: hidden
+            grid-row: 3
+            font: 22px $font
+            margin: 5px 0 25px
+
+        // this section is for the ping button and latency readout
+        .infoBox
+            grid-row: 4
+            display: grid
+            grid-template-columns: 50% 50% // gives each part 50% of the box
+            align-items: center
+            padding-bottom: 50px
+
+            button
+                font: 28px $font
+                margin-left: 10px
+
+                border-radius: 10px
+                background: none
+                border: black solid 2px
+
+                transition: transform 0.1s
+
+            .latency
+                color: black
+                padding: 0
+                font: 22px $font
+                margin: 0
+
+.offlineStatus
+    border: #C50000 solid 6px !important
+
+.onlineStatus
+    border: #00C570 solid 6px !important
+
+
+@media screen and ( max-width: 700px )
+    #resultsCount
+        grid-column: 1/3
+
+    .apiBox .apiTitle
+        font: 35px/33px $font
+
+
+    
