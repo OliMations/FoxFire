@@ -9,6 +9,12 @@ body {
   width: 60%;
 }
 
+#leftside #thankyou {
+  text-align: center;
+  font: lighter 60px "Segoe UI", "Noto Sans";
+  color: #FFFFFF;
+}
+
 #leftside fieldset {
   border: none;
 }
@@ -98,10 +104,10 @@ body {
   #leftside {
     width: 100%;
     margin-left: 0;
-    grid-column: span 3;
+    grid-column: span 4;
   }
   #leftside .halflength {
-    width: 47%;
+    width: 48%;
   }
 }
 /*# sourceMappingURL=contact.css.map */

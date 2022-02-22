@@ -11,15 +11,15 @@
 <div class="apiBox">
     <p class="apiTitle">Websites (APIs) Accessed for <u>{{ cat["name"] }}</u></p>
     {% for api in cat["apis"] %}
-            <div class="api {% if api['status'] == True %}onlineStatus{% elif api['status'] == False %}offlineStatus{% endif %}">
+        <div class="api {% if cat['apis'][api]['status'] == True %}onlineStatus{% elif cat['apis'][api]['status'] == False %}offlineStatus{% endif %}">
             
-            <img src="{{ url_for('static', filename='cdn/apiLogos/' + api['logo']) }}" onerror="imageDisplayError(this)" 
-                title="{{ api['name'] }}'s Logo">
-            <h4>{{ api["name"] }}</h4>
-            <p>{{ api["desc"] }}</p>
+            <img src="{{ url_for('static', filename='cdn/apiLogos/' + cat['apis'][api]['logo']) }}" onerror="imageDisplayError(this)" 
+                title="{{ cat['apis'][api]['name'] }}'s Logo">
+            <h4 class="apiName">{{ cat['apis'][api]["name"] }}</h4>
+            <p>{{ cat['apis'][api]["desc"] }}</p>
             <div class="infoBox">
-                <button class="enlarge">Ping!</button> <!-- this isnt currently linked to anything but will be later -->
-                <h6 class="latency">Latency<br><b>{{ api["ping"] }}</b><i>ms</i></h6> <!-- this also isnt currently linked to anything but will be later -->
+                <button class="enlarge" onclick="ping(event)" value="{{ api }}">Ping!</button> <!-- this isnt currently linked to anything but will be later -->
+                <h6 class="latency">Latency<br><b>{% if cat['apis'][api]['status'] %} {{ cat['apis'][api]["ping"] }} {% elif not cat['apis'][api]['status'] %} 'XX' {% endif %}</b><i> ms</i></h6> <!-- this also isnt currently linked to anything but will be later -->
             </div>
         </div>
     {% endfor %}

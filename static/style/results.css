@@ -19,9 +19,7 @@ body {
 }
 
 #results {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1/3;
+  grid-column: 1/-1;
 }
 
 .resultEntry {
@@ -29,9 +27,7 @@ body {
   display: grid;
   -ms-grid-columns: 215px auto;
       grid-template-columns: 215px auto;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / 3;
+  grid-column: 1 / -1;
   color: white;
 }
 
@@ -64,7 +60,7 @@ body {
 }
 
 .resultsInfoBox {
-  grid-column: span 3;
+  grid-column: span 4;
   margin-top: 30px;
   text-align: center;
   color: white;
@@ -100,7 +96,7 @@ body {
 }
 
 footer {
-  grid-column: span 3;
+  grid-column: span 4;
   text-align: center;
   margin: 10px 0 25px 0;
   font: normal normal 200 22px "Segoe UI", "Noto Sans";
@@ -144,10 +140,11 @@ footer a {
   .leftHandSide .reliability b {
     font: normal normal 400 22px "Segoe UI", "Noto Sans";
   }
+  .leftHandSide .reliability br {
+    display: none;
+  }
   .rightHandSide {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2;
-    grid-column: 1 / 3;
+    grid-column: 1 / -1;
   }
   .rightHandSide .resultBody {
     max-width: 100vw;
@@ -156,9 +153,7 @@ footer a {
     display: none;
   }
   #resultsCount {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2;
-    grid-column: 1 / 3;
+    grid-column: 1 / -1;
   }
 }
 /*# sourceMappingURL=results.css.map */

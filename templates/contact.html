@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/contact.css') }}">
 
 <form id="leftside">
-    <fieldset>
+    <fieldset id="contactForm">
         <legend>Get in touch with us!</legend>
         <input type="text" class="halflength" id="fname" name="fname" autocomplete="given-name" placeholder="First Name" required>
         <input type="text" class="halflength" id="sname" name="sname" autocomplete="family-name" placeholder="Last Name" required>
@@ -12,10 +12,13 @@
         <br>
         <input type="text" id="subject" name="subject" placeholder="Subject Line" required>
         <br>
-        <textarea name="msgArea" spellcheck="true" placeholder="Your Message... Be Creative!" required></textarea>
+        <textarea name="msgArea" id="body" spellcheck="true" placeholder="Your Message... Be Creative!" required></textarea>
         <br>
         <input type="submit" id="submit" class="enlarge" name="submit">
     </fieldset>
+
+    <h1 class="hidden" id="thankyou">Thanks for contacting us!</h1>
+
 </form>
 
 <div id="foxBox">

@@ -54,7 +54,7 @@ function categoryMenuClose(cat) {
     document.querySelector("#searchButtonHolder").style.transform = ""
     document.querySelector("#searchButtonHolder").style.transitionDelay = "0s"
     if (cat != -1) {
-        $.post("./search", {
+        $.post("/search", {
             "option": 0,
             "value": cat
         }) 
@@ -70,6 +70,21 @@ $("#searchInputForm").submit((e) => {
     document.querySelector(".blackout").style.height = "100%"
 })
 
+$("#leftside").submit((e) => {
+    e.preventDefault()
+    let form = $("#leftside fieldset")
+    $.post("/contact", {
+        fName: form.children("#fname").val(),
+        sName: form.children("#sname").val(),
+        email: form.children("#email").val(),
+        subject: form.children("#subject").val(),
+        body: form.children("#body").val()
+    }).done(() => {
+        form.addClass("hidden")
+        $("#thankyou").removeClass("hidden")
+    })
+})
+
 function apiAlertClose() {
     document.querySelector("#apiAlert").classList.add("hidden")
 }
@@ -81,11 +96,11 @@ function apiAlertOpen() {
 function viewAllResults() {
     let results = document.querySelectorAll(".resultEntry")
     results.forEach(item => {
-        if (parseInt(item.getAttribute("score")) < 70) {
+        if (parseInt(item.getAttribute("score")) < 60) {
             item.classList.remove("hidden")
         }
     })
-    document.querySelector(".resultsInfoBox").classList.add("hidden")
+    document.querySelector(".noMoreResultsHoldingBox").classList.add("hidden")
 }
 
 function imageDisplayError(elem) {
@@ -95,3 +110,24 @@ function imageDisplayError(elem) {
     }
 }
 
+function ping(event) {
+    let apiButton = $(event.target)
+    let apiName = apiButton.attr("value")
+    apiButton.attr("disabled", "disabled")
+    apiButton.parent().children(".latency").children("b").text("??")
+
+    $.post("/api/ping", {
+        "api": apiName
+    }).done((result) => {
+        let latency = result["latency"]
+        apiButton.parent().parent().addClass("onlineStatus")
+        apiButton.parent().parent().removeClass("offlineStatus")
+        apiButton.parent().children(".latency").children("b").text(latency)
+    }).fail((x) => {
+        apiButton.parent().parent().addClass("offlineStatus")
+        apiButton.parent().parent().removeClass("onlineStatus")
+        apiButton.parent().children(".latency").children("b").text("XX")
+    }).always((x) => {
+        return true
+    })
+}

@@ -1,9 +1,9 @@
 {% extends "core.html" %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/results.css') }}">
-<div id="apiAlert" hidden>
+<div id="apiAlert" {% if not offlineAPIs %} hidden {% else %} {% endif %}>
     <img class="enlarge" onclick="apiAlertClose()" src="{{ url_for('static', filename='cdn/elements/close.png') }}" title="Close">
-    <p>3 APIs are currently offline 1 of which is classified as "Important". This means <u>your search results may be impeded</u> and not up to expectations. Our Apologies.</p>
+    <p>{{ offlineAPIs }} APIs are currently offline {{ criticalOfflineAPIs }} of which is classified as "Important". This means <u>your search results may be impeded</u> and not up to expectations. Our Apologies.</p>
 </div>
 
 
@@ -15,10 +15,10 @@
 {% for result in results %}
     <div class="resultEntry {% if result['score'] < 70 %} hidden {% else %} {% endif %}" score="{{ result['score'] }}">
         <div class="leftHandSide">
-            <p class="reliability">Reliability Score: <b>{{ result['score'] }}</b></p>
+            <p class="reliability">Reliability Score: <br><b>{{ result['score'] }}</b></p>
         </div>
         <div class="rightHandSide">
-            <a class="resultTitle" href="{{ result['url'] }}">{{ result['base'] }} ~ {{ result['title']|safe }}</a>
+            <a class="resultTitle" href="{{ result['url'] }}" target="_blank">{{ result['base'] }} ~ {{ result['title']|safe }}</a>
             <p class="resultBody">{{ result['extract']|safe }}</p>
         </div>  
     </div>
@@ -26,8 +26,10 @@
 </div>
 
 <div class="resultsInfoBox">
-    <p id="noMoreResults">No More Results Above a Score of 70!</p>
-    <button class="enlarge" onclick="viewAllResults()">View All</button>
+    <div class="noMoreResultsHoldingBox">
+        <p id="noMoreResults">No More Results Above a Score of 60!</p>
+        <button class="enlarge" onclick="viewAllResults()">View All</button>
+    </div>
     <p id="noAnswer">Didn't Get an Answer? Search Via: <a href="https://www.google.com/search?q={{ searchTerm }}" target="_blank">Google</a>, 
         <a href="https://www.bing.com/search?q={{ searchTerm }}" target="_blank">Bing</a>, 
         <a href="https://duckduckgo.com/?q={{ searchTerm }}" target="_blank">DuckDuckGo</a></p>
