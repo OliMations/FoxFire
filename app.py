@@ -433,7 +433,6 @@ async def redditAuth():
         async with aiohttp.ClientSession() as session:
             async with session.post(baseURL, data=data, headers=headers) as resp:
                 jsonResp = await resp.json()
-                print(jsonResp)
 
     except Exception:
         return {"Result": "Failed"}, 401
@@ -467,7 +466,6 @@ def search():
     """Mostly redundant, endpoint for setting category"""
     if flask.request.form["option"] == "0":  # If this post was setting the category, option is equal to 0
         flask.session["category"] = flask.request.form["value"]
-        print("The category has been set to: {}".format(flask.session["category"]))
     else:
         return {"response": "Failed, unknown search form"}, 400
     return {"response": "Success"}, 200
