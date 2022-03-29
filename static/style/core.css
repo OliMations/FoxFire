@@ -14,8 +14,8 @@
 
 button {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 a {
@@ -112,7 +112,7 @@ body {
   margin: 100px 20px;
   text-align: right;
   list-style: none;
-  font: normal normal 300 35px/53px Segoe UI;
+  font: normal normal 300 35px/53px "Segoe UI", "Roboto";
 }
 .hamburgerMenu ul a {
   text-decoration: none;
@@ -146,7 +146,7 @@ body {
     right: -100%;
   }
   .hamburgerMenu ul {
-    font: normal normal 300 45px/73px Segoe UI;
+    font: normal normal 300 45px/73px "Segoe UI", "Roboto";
   }
 
   #websiteName {

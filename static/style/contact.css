@@ -34,7 +34,10 @@ body {
   resize: none;
 }
 #leftside #submit {
-  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: black;
   width: 25%;
   font-weight: normal;
   transition: transform 0.1s;

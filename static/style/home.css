@@ -23,7 +23,7 @@ body {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  font: normal normal 600 23px "Segoe UI", "Roboto";
+  font: normal normal 600 23px/30px "Segoe UI", "Roboto";
   color: #FFFFFF;
 }
 
