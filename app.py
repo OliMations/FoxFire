@@ -31,7 +31,7 @@ htmlCleaner = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
 
 categoryList = [{"name": "Standard", "id": 1, "apis": {  # Defines all the categorys and their APIs
     "WolframAlpha": {"name": "WolframAlpha",  "critical": False, "logo": "wolfram.jpg", "runner": "wolframAPI", "baseURL": "https://api.wolframalpha.com", "ping": 0, 
-                     "status": True, "desc": "WolframAlpha is a computational knowledge engine. It answers factual queries directly by computing the \
+                     "status": None, "desc": "WolframAlpha is a computational knowledge engine. It answers factual queries directly by computing the \
                          answer from externally sourced data."},
 
     "Wikipedia": {"name": "Wikipedia ★", "critical": True, "logo": "wikipedia.png", "runner": "wikimediaAPI", "baseURL": "https://en.wikipedia.org", "ping": 0, "status": True,
@@ -497,6 +497,9 @@ def results():
     searchTermExtraFiltered = [word for word in searchTermFiltered if word.lower() not in extraDetailedFluff]
     
     # If category = 0 its been set to "all" or a category hasn't been selected
+    if "category" not in flask.session:
+        flask.session["category"] = "0"
+
     if str(flask.session["category"]) == "0":
         for category in categoryList:
             for api in category["apis"].values():
@@ -594,6 +597,7 @@ def results():
 @app.route('/about')
 def about():
     """About us page"""
+    print("beans")
     return flask.render_template("about.html", pageTitle="About")
 
 
@@ -638,7 +642,7 @@ def contact():
     return flask.render_template("contact.html", pageTitle="Contact Us")
 
 
-@app.route('/api/ping', methods=["POST"])
+@app.route('/api/ping', methods=["GET", "POST"])
 async def APIPing():
     apiName = flask.request.form["api"]
     time1 = asyncio.get_event_loop().time()
@@ -656,7 +660,7 @@ async def APIPing():
     for n, _ in enumerate(categoryList):
         try: categoryList[n]["apis"][apiName]["ping"] = latency
         except KeyError: pass
-        
+    
     return {"latency": latency}, 200
 
 
