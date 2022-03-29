@@ -58,7 +58,7 @@ categoryList = [{"name": "Standard", "id": 1, "apis": {  # Defines all the categ
 }}]
 # Used by the search optimiser to just pullout key words
 fluffWords = ["to", "and", "but", "are", "do", "my", "i", "on", "or", "would", "when", "the", "by", "as",
-              "a", "an", "of", "it", "for", "that", "from", "there", "who", "can", "have"]  
+              "an", "of", "it", "for", "that", "from", "there", "who", "can", "have"]  
 extraDetailedFluff = ["how", "use", "what", "is", "make", "change", "run", "from"]
 
 
@@ -290,10 +290,9 @@ async def githubAPI(data):
         finalResult["success"] = True
     
     lookupKey = ""
+    
     # Searches through the names of the packages found on github to try and exactly match one with one of the words in the search
-    print(packageNames)
     for word in searchValue:
-        print(word)
         try: 
             packageNames.index(word.lower())
             lookupKey = word
@@ -451,6 +450,7 @@ def searchPreparation(value=None):
     if value == None:
         return
     value = value.strip()
+    # removes all punctuation
     value = value.translate({ord(char): "" for char in string.punctuation})
     value = [word for word in value.split(
         " ") if word.lower() not in fluffWords]
@@ -467,6 +467,7 @@ def search():
     """Mostly redundant, endpoint for setting category"""
     if flask.request.form["option"] == "0":  # If this post was setting the category, option is equal to 0
         flask.session["category"] = flask.request.form["value"]
+        print("The category has been set to: {}".format(flask.session["category"]))
     else:
         return {"response": "Failed, unknown search form"}, 400
     return {"response": "Success"}, 200
@@ -482,6 +483,7 @@ def home():
 def results():
     """The results page, this also handles the system for initiating and collecting searches, same way other major search engines do it"""
     searchTerm = flask.request.args.get("search")
+    # Decodes the url formatted search string to normal text
     searchTermOriginal = html.unescape(searchTerm)
 
     refinedAPIsToProbe = []
@@ -493,18 +495,21 @@ def results():
     count = {"good": 0, "bad": 0}
 
     searchTermFiltered = searchPreparation(value=searchTermOriginal)
+    # Some APIs prefer an even more stripped down version of the search, this is creating that
     searchTermExtraFiltered = [word for word in searchTermFiltered if word.lower() not in extraDetailedFluff]
-    print(searchTermFiltered, searchTermExtraFiltered)
     
+    # If category = 0 its been set to "all" or a category hasn't been selected
     if str(flask.session["category"]) == "0":
         for category in categoryList:
             for api in category["apis"].values():
                 if api["runner"] not in [checkAPI["runner"] for checkAPI in APIsToProbe]:
                     APIsToProbe.append(api)                
     else:
+        # Grabs the APIs to probe from the dictionary, all thats needed is the information not the name so just values are fetched
         APIsToProbe = categoryList[int(flask.session["category"])-1]["apis"].values()
     
     for api in APIsToProbe:
+        # Makes sure the API is online and gets the most important APIs to call
         if api["status"]:
             if api["critical"]:
                 criticalAPIsToCall.append(eval(api["runner"])({"searchTerm":searchTermFiltered, "searchTermMinimal":searchTermExtraFiltered}))
@@ -519,7 +524,6 @@ def results():
     subject = [apiResult["subject"] for apiResult in criticalApiCollection if "subject" in apiResult]
     try: subject = subject[0]
     except IndexError: subject = ""
-    print(subject)
 
     apisToCall = [eval(api["runner"])({"searchTerm":searchTermFiltered, "subject":subject, "searchTermMinimal":searchTermExtraFiltered})
                   for api in refinedAPIsToProbe]
@@ -539,7 +543,7 @@ def results():
                 title = title[:130] + "..."
             if not extract or "may refer to:" in extract.lower():
                 continue
-
+            
             for word in searchTermExtraFiltered:
                 if word.lower() not in extract.lower():
                     score -= 5
@@ -553,10 +557,12 @@ def results():
             if subject.lower() not in extract.lower() or subject.lower() not in title.lower():
                 score -= 20
 
+            # Prevents the extract from being over 4000 characters long
             modifiedExtract = extract[:4000]
             if modifiedExtract < extract:
                 modifiedExtract += "..."
 
+            # Awards points depending on the size of the extract.
             if len(modifiedExtract) <= 50:
                 score -= 15
             elif len(modifiedExtract) <= 100 and len(modifiedExtract) > 50:
@@ -597,7 +603,8 @@ def about():
 def contact():
     """Contact us page"""
     
-    if flask.request.method == "POST":        
+    if flask.request.method == "POST":
+        # As the mail server uses SSL I need to initiate SSL
         context = ssl.create_default_context()
         contactersFirstname = flask.request.form.get("fName")
         contactersSurname = flask.request.form.get("sName")
@@ -605,6 +612,7 @@ def contact():
         contactersSubject = flask.request.form.get("subject")
         contactersBody = flask.request.form.get("body")
         
+        # Setting up the email
         message = multipart.MIMEMultipart("alternative")
         message["subject"] = contactersSubject
         message["From"] = contactersEmail
@@ -676,7 +684,6 @@ async def statusChecker():
 
             except Exception as e:
                 categoryList[n]["apis"][key]["status"] = False
-
 
 @app.route('/api/dashboard')
 def apiDashboard():

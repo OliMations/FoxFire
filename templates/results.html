@@ -30,9 +30,9 @@
         <p id="noMoreResults">No More Results Above a Score of 60!</p>
         <button class="enlarge" onclick="viewAllResults()">View All</button>
     </div>
-    <p id="noAnswer">Didn't Get an Answer? Search Via: <a href="https://www.google.com/search?q={{ searchTerm }}" target="_blank">Google</a>, 
-        <a href="https://www.bing.com/search?q={{ searchTerm }}" target="_blank">Bing</a>, 
-        <a href="https://duckduckgo.com/?q={{ searchTerm }}" target="_blank">DuckDuckGo</a></p>
+    <p id="noAnswer">Didn't Get an Answer? Search Via: <a href="https://www.google.com/search?q={{ searchTerm }}" target="_blank" rel="noopener noreferrer">Google</a>, 
+        <a href="https://www.bing.com/search?q={{ searchTerm }}" target="_blank" rel="noopener noreferrer">Bing</a>, 
+        <a href="https://duckduckgo.com/?q={{ searchTerm }}" target="_blank" rel="noopener noreferrer">DuckDuckGo</a></p>
 </div>
 
 <footer>
@@ -40,20 +40,6 @@
     <a href="./dashboard">API Dashboard</a>
     <a href="/">Return Home</a>
 </footer>
-
-<!-- <script>
-    let sorted = $(".resultEntry").toArray()
-    sorted.sort((a, b) => {
-        let valueA = parseInt(a.getAttribute("score"))
-        let valueB = parseInt(b.getAttribute("score"))
-        return valueB - valueA
-    })
-
-    console.log(sorted);
-    for (const [index, element] of sorted.entries()) {
-        element.style.order = index
-    }
-</script> -->
 
 {% endblock %}
 

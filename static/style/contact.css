@@ -1,6 +1,5 @@
 body {
-  -ms-grid-rows: 20vh auto;
-      grid-template-rows: 20vh auto;
+  grid-template-rows: 20vh auto;
 }
 
 #leftside {
@@ -8,92 +7,75 @@ body {
   margin: 30px 60px;
   width: 60%;
 }
-
 #leftside #thankyou {
   text-align: center;
-  font: lighter 60px "Segoe UI", "Noto Sans";
+  font: lighter 60px "Segoe UI", "Roboto";
   color: #FFFFFF;
 }
-
 #leftside fieldset {
   border: none;
 }
-
 #leftside legend {
   text-align: left;
-  font: lighter 45px "Segoe UI", "Noto Sans";
+  font: lighter 45px "Segoe UI", "Roboto";
   color: #FFFFFF;
 }
-
 #leftside input, #leftside textarea {
   display: inline-block;
   width: 97.5%;
   height: 40px;
   margin: 2.5px 0;
-  font: lighter 20px "Segoe UI", "Noto Sans";
+  font: lighter 20px "Segoe UI", "Roboto";
   border-radius: 5px;
   border: 1px solid #707070;
 }
-
 #leftside textarea {
   height: 20vh;
   resize: none;
 }
-
 #leftside #submit {
   border: none;
   width: 25%;
   font-weight: normal;
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
 }
-
 #leftside .halflength {
   width: 48%;
 }
 
 #foxBox {
   position: absolute;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   top: 23vh;
   width: 32vw;
   right: 70px;
   height: 35vw;
 }
-
 #foxBox #f1 {
   max-width: 20vw;
 }
-
 #foxBox #f2 {
   width: 13vw;
   right: 0;
   top: 8vw;
 }
-
 #foxBox #f3 {
   width: 12vw;
   bottom: 2vw;
   left: 8vw;
   z-index: -1;
 }
-
 #foxBox img {
   position: absolute;
   border-radius: 10px;
   z-index: 0;
 }
-
 #foxBox #foxType {
   position: absolute;
   margin: 0;
   right: 7vw;
   top: 6.5vw;
-  font: 1vw "Segoe UI", "Noto Sans";
+  font: 1vw "Segoe UI", "Roboto";
   color: white;
 }
 
@@ -101,6 +83,7 @@ body {
   #foxBox {
     display: none;
   }
+
   #leftside {
     width: 100%;
     margin-left: 0;
@@ -109,5 +92,4 @@ body {
   #leftside .halflength {
     width: 48%;
   }
-}
-/*# sourceMappingURL=contact.css.map */
+}/*# sourceMappingURL=contact.css.map */

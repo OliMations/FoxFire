@@ -12,15 +12,19 @@
   border-radius: 5px;
 }
 
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 a {
   color: white;
 }
 
 body {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 215px auto;
-      grid-template-columns: 215px auto;
+  grid-template-columns: 215px auto;
   background-color: #2E2E2E;
   background-position: center center;
   background-attachment: fixed;
@@ -29,8 +33,7 @@ body {
 }
 
 .enlarge:hover {
-  -webkit-transform: scale(1.1, 1.1) !important;
-          transform: scale(1.1, 1.1) !important;
+  transform: scale(1.1, 1.1) !important;
   cursor: pointer;
 }
 
@@ -39,65 +42,46 @@ body {
 }
 
 #searchButtonHolder {
-  display: -ms-grid;
   display: grid;
   padding-top: 10px;
-  -ms-grid-column: 2;
   grid-column: 2;
-  -ms-grid-row: 1;
   grid-row: 1;
-  -ms-grid-rows: 60px;
-      grid-template-rows: 60px;
-  -ms-grid-columns: 50vw 60px;
-      grid-template-columns: 50vw 60px;
+  grid-template-rows: 60px;
+  grid-template-columns: 50vw 60px;
   position: relative;
-  -webkit-transition: -webkit-transform 1.4s;
-  transition: -webkit-transform 1.4s;
   transition: transform 1.4s;
-  transition: transform 1.4s, -webkit-transform 1.4s;
 }
-
 #searchButtonHolder #searchInput {
   width: 94%;
   height: 95%;
   padding-right: 6%;
   border: none;
   border-radius: 10px;
-  font: 22px "Segoe UI", "Noto Sans";
+  font: 22px "Segoe UI", "Roboto";
   padding-left: 10px;
 }
-
 #searchButtonHolder .searchButton {
   position: relative;
   float: right;
   top: -50px;
   width: 40px;
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
 }
-
 #searchButtonHolder #searchInputLabel {
   display: none;
 }
 
 #hamburger {
   justify-self: flex-end;
-  -ms-grid-row: 1;
   grid-row: 1;
   grid-column: main-end;
   width: 50px;
   margin: 25px 2vw 0 20px;
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
 }
 
 #websiteName {
   justify-self: flex-start;
-  -ms-grid-row: 1;
   grid-row: 1;
   z-index: 2;
   margin: 5px 0 0 23px;
@@ -115,42 +99,32 @@ body {
   width: 300px;
   overflow: hidden;
   background-color: #dbdbdbde;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .hamburgerMenu #closeMenu {
   position: absolute;
   right: 0px;
   width: 40px;
   margin: 40px 40px 0 0;
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
 }
-
 .hamburgerMenu ul {
   margin: 100px 20px;
   text-align: right;
   list-style: none;
   font: normal normal 300 35px/53px Segoe UI;
 }
-
 .hamburgerMenu ul a {
   text-decoration: none;
   color: #464646;
 }
 
 .blackout {
-  display: -ms-grid;
   display: grid;
   position: fixed;
   left: 0;
   bottom: 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   justify-items: center;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -158,13 +132,11 @@ body {
   height: 0;
   z-index: 100;
   background-color: #000000e5;
-  -webkit-transition: 0.8s;
   transition: 0.8s;
 }
-
 .blackout h1 {
   text-align: center;
-  font: bold normal 60px "Segoe UI", "Noto Sans";
+  font: bold normal 60px "Segoe UI", "Roboto";
   color: white;
 }
 
@@ -176,14 +148,13 @@ body {
   .hamburgerMenu ul {
     font: normal normal 300 45px/73px Segoe UI;
   }
+
   #websiteName {
     display: none;
   }
+
   #searchButtonHolder {
-    -ms-grid-column: 1;
     grid-column: 1;
-    -ms-grid-columns: 70vw 60px;
-        grid-template-columns: 70vw 60px;
+    grid-template-columns: 70vw 60px;
   }
-}
-/*# sourceMappingURL=core.css.map */
+}/*# sourceMappingURL=core.css.map */
