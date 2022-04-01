@@ -8,7 +8,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffffff75;
+  background: rgba(255, 255, 255, 0.4588235294);
   border-radius: 5px;
 }
 
@@ -98,7 +98,7 @@ body {
   height: 100%;
   width: 300px;
   overflow: hidden;
-  background-color: #dbdbdbde;
+  background-color: rgba(219, 219, 219, 0.8705882353);
   transition: 0.5s;
 }
 .hamburgerMenu #closeMenu {
@@ -131,7 +131,7 @@ body {
   width: 100%;
   height: 0;
   z-index: 100;
-  background-color: #000000e5;
+  background-color: rgba(0, 0, 0, 0.8980392157);
   transition: 0.8s;
 }
 .blackout h1 {

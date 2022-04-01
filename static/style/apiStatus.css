@@ -73,6 +73,10 @@ body {
   border: black solid 2px;
   transition: transform 0.1s;
 }
+.apiBox .api .infoBox button:disabled {
+  color: #666666;
+  border-color: #5a5a5a;
+}
 .apiBox .api .infoBox .latency {
   color: black;
   padding: 0;

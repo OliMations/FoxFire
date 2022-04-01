@@ -4,8 +4,6 @@
 
 
 <p id="resultsCount">{{ apiStatuses["total"] }} APIs Used in Total. {{ apiStatuses["online"] }} Online, {{ apiStatuses["offline"] }} Offline</p>
-<p hidden id="backupLink">{{ url_for('static', filename='cdn/apiLogos/default.gif') }}</p> <!-- this is the default image link thats accessed in the javascript -->
-
 
 {% for cat in categoryList %}
 <div class="apiBox">
@@ -24,6 +22,18 @@
         </div>
     {% endfor %}
 </div>
+
+<script>
+    function imageDisplayError(elem) {
+        // this defines a local variable which contains the link to the default image
+        let backupLink = "{{ url_for('static', filename='cdn/apiLogos/default.gif') }}"
+        
+        // this prevents perpetual loading if the default image is also erroring
+        if (elem.src != backupLink) { 
+            elem.src = backupLink
+        }
+    }
+</script>
 {% endfor %}
 {% endblock %}
 

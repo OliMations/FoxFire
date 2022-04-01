@@ -103,13 +103,6 @@ function viewAllResults() {
     document.querySelector(".noMoreResultsHoldingBox").classList.add("hidden")
 }
 
-function imageDisplayError(elem) {
-    let backupLink = $("#backupLink").text() // this defines a local variable which contains the link to the default image
-    if (elem.src != backupLink) { // this prevents perpetual loading if the default image is also erroring
-        elem.src = backupLink
-    }
-}
-
 function ping(event) {
     let apiButton = $(event.target)
     let apiName = apiButton.attr("value")
