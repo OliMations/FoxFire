@@ -37,6 +37,7 @@ body {
   text-align: center;
   width: 300px;
   max-height: 700px;
+  padding-bottom: 10px;
 }
 .apiBox .api img {
   grid-row: 1;

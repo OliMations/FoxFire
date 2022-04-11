@@ -1,5 +1,4 @@
 body {
-  grid-template-rows: 150px;
   background-color: #2E2E2E;
 }
 
@@ -43,7 +42,7 @@ body {
   cursor: pointer;
 }
 .resultEntry .resultBody {
-  margin: 0 0 30px;
+  margin: 0 0 40px;
   font: normal normal 200 18px "Segoe UI", "Roboto";
   max-width: 60vw;
 }

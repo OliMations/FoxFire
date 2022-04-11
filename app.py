@@ -488,14 +488,13 @@ def results():
     criticalAPIsToCall = []
     offlineAPIs = 0
     criticalOfflineAPIs = 0
-    finalResult = []
+    finalResults = []
     APIsToProbe = []
     count = {"good": 0, "bad": 0}
 
     searchTermFiltered = searchPreparation(value=searchTermOriginal)
     # Some APIs prefer an even more stripped down version of the search, this is creating that
     searchTermExtraFiltered = [word for word in searchTermFiltered if word.lower() not in extraDetailedFluff]
-    print(f"Cleansed search term: {searchTermFiltered}\nExtra Cleansed search term: {searchTermExtraFiltered}")
     
     # If category = 0 its been set to "all" or a category hasn't been selected
     if "category" not in flask.session:
@@ -532,7 +531,6 @@ def results():
     apiCollection = asyncio.run(asyncInit(apisToCall))
     
     apiCollection = apiCollection + criticalApiCollection
-    print(f"{len(apiCollection)} APIs have returned a valid result out of {len(refinedAPIsToProbe + criticalAPIsToCall)} to call")
     for apiResult in apiCollection:
         if apiResult["success"] == False:
             continue
@@ -582,7 +580,7 @@ def results():
             else:
                 count["bad"] += 1
 
-            finalResult.append(
+            finalResults.append(
                 {"url": url, 
                  "base": apiResult["name"], 
                  "title": title, 
@@ -590,11 +588,8 @@ def results():
                  "score": score}
             )
 
-    finalResult.sort(key=scoreBasedSort, reverse=True)
-    for result in finalResult:
-        print(f"Score {result['score']} with URL {result['url']}")
-        
-    return flask.render_template("results.html", pageTitle="Results", results=finalResult, count=count,
+    finalResults.sort(key=scoreBasedSort, reverse=True)
+    return flask.render_template("results.html", pageTitle="Results", results=finalResults, count=count,
                                  uniqueWebsites=len(apiCollection), searchTerm=searchTerm, searchTermO=searchTermOriginal,
                                  offlineAPIs=offlineAPIs, criticalOfflineAPIs=criticalOfflineAPIs)
 
@@ -602,7 +597,6 @@ def results():
 @app.route('/about')
 def about():
     """About us page"""
-    print("beans")
     return flask.render_template("about.html", pageTitle="About")
 
 
@@ -705,8 +699,6 @@ def apiDashboard():
         statuses["online"] += sum(api["status"] == True for api in cat["apis"].values())
         
         statuses["total"] += len(cat["apis"])
-
-    print(statuses)
 
     return flask.render_template("apiStatus.html", pageTitle="Api Status Dashboard", categoryList=categoryList, apiStatuses=statuses)
 
