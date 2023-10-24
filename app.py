@@ -21,7 +21,8 @@ githubKey = "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"
 emailPassword = "FoxFire99"
 # Encryption key for the browser session
 app.secret_key = "160DA98BE181F8F67DCD9B74FC16AEB2G5C8D667C62DE99139B4A1Z84189DFA5"
-app.config["SERVER_NAME"] = "www.foxfire.fyi"
+app.config["SERVER_NAME"] = "ollee.dev"
+app.url_map.default_subdomain = "foxfire"
 app.config["PREFERRED_URL_SCHEME"] = "https"
 # Required by reddit so they can identify my project
 userAgent = "webApp:oWRPm7rMWyrKXXFQs83pKg:v1.0.0 (by /u/OliMations)"
