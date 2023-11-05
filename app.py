@@ -21,8 +21,8 @@ githubKey = "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"
 emailPassword = "FoxFire99"
 # Encryption key for the browser session
 app.secret_key = "160DA98BE181F8F67DCD9B74FC16AEB2G5C8D667C62DE99139B4A1Z84189DFA5"
-app.config["SERVER_NAME"] = "ollee.dev"
-app.url_map.default_subdomain = "foxfire"
+app.config["SERVER_NAME"] = "foxfire.ollee.dev"
+# app.url_map.default_subdomain = "foxfire"
 app.config["PREFERRED_URL_SCHEME"] = "https"
 # Required by reddit so they can identify my project
 userAgent = "webApp:oWRPm7rMWyrKXXFQs83pKg:v1.0.0 (by /u/OliMations)"
@@ -722,8 +722,8 @@ scheduler.start()
 
 # this gets run when the project is being run locally not on a server, hence when its being developed
 if __name__ == "__main__":
-    website_url = "localhost:5000"
+    website_url = "localhost:6666"
     app.config["SERVER_NAME"] = website_url
     # Fixing a bug that occurs only in windows so will only appear during bug testing
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     app.run(debug=True, use_reloader=False)
