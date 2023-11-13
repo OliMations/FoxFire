@@ -1,10 +1,12 @@
 import asyncio
+from dotenv import load_dotenv
 import re
 import string
 import html
 from email.mime import text, multipart
 import smtplib
 import ssl
+import os
 from io import StringIO
 
 import aiohttp
@@ -16,11 +18,15 @@ from markdown import Markdown
 # https://stackapps.com/apps/oauth/view/22587
 
 app = flask.Flask(__name__, static_folder='static', static_url_path="")
-wolframID = "E5XQJP-AR8P58K4HL"
-githubKey = "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"
-emailPassword = "FoxFire99"
+load_dotenv(".env")
+
+wolframID = os.getenv("WOLFRAM_ID")
+githubKey = os.getenv("GIT_KEY")
+emailPassword = os.getenv("EMAIL_PASSWORD")
+reddit_key = os.getenv("REDDIT_KEY")
 # Encryption key for the browser session
-app.secret_key = "160DA98BE181F8F67DCD9B74FC16AEB2G5C8D667C62DE99139B4A1Z84189DFA5"
+app.secret_key = os.getenv("APP_KEY")
+
 app.config["SERVER_NAME"] = "foxfire.ollee.dev"
 # app.url_map.default_subdomain = "foxfire"
 app.config["PREFERRED_URL_SCHEME"] = "https"
@@ -426,7 +432,7 @@ async def redditAuth():
     }
     headers = {
         'User-Agent': userAgent,
-        "Authorization": "Basic b1dSUG03ck1XeXJLWFhGUXM4M3BLZzpuSzMxaXVLLXlDd3BtTTVBSEZZX21SbnMtUjVtanc="
+        "Authorization": "Basic " + reddit_key
     }
     print("Authenticating with reddit")
 
